@@ -47,7 +47,7 @@
   background-color: $primary-color;
 
   &:focus {
-    box-shadow: 0 0 2px $primary-color;
+    box-shadow: 0 0 4px $primary-color;
   }
 }
 
@@ -55,6 +55,6 @@
   background-color: $secondary-color;
 
   &:focus {
-    box-shadow: 0 0 2px $secondary-color;
+    box-shadow: 0 0 4px $secondary-color;
   }
 }
