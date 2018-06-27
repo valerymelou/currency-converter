@@ -77,15 +77,83 @@ const convert = function(fromCurrency, toCurrency, amount) {
 
 
 /**
+ * Register the service worker.
+ */
+const registerServiceWorker = function() {
+  if (!navigator.serviceWorker) return;
+
+  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+    if (!navigator.serviceWorker.controller) {
+      return;
+    }
+
+    if (reg.waiting) {
+      updateReady(reg.waiting);
+      return;
+    }
+
+    if (reg.installing) {
+      trackInstalling(reg.installing);
+      return;
+    }
+
+    reg.addEventListener('updatefound', () => {
+      trackInstalling(reg.installing);
+    });
+  });
+
+  let refreshing;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) return;
+    window.location.reload();
+    refreshing = true;
+  });
+}
+
+
+/**
+ * Called when there is an update for the service worker.
+ */
+const updateReady = function(worker) {
+  let toastWrapper = getElement('.tst-ToastWrapper');
+
+  toastWrapper.classList.remove('tst-ToastWrapper-hidden');
+  toastWrapper.querySelector('.tst-Toast_Button-refresh').addEventListener('click', () => {
+    worker.postMessage({action: 'skipWaiting'});
+  });
+  toastWrapper.querySelector('.tst-Toast_Button-dismiss').addEventListener('click', () => {
+    toastWrapper.classList.add('tst-ToastWrapper-hidden');
+  })
+}
+
+
+/**
+ * Tracks the installing status of the service worker.
+ */
+const trackInstalling = function(worker) {
+  worker.addEventListener('statechange', () => {
+    if (worker.state === 'installed') {
+      updateReady(worker);
+    }
+  });
+}
+
+
+/**
  * Entry point of our program. To be launched when the DOM is loaded.
  */
 const main = function() {
+  // Register the service worker.
+  registerServiceWorker();
+
+  // Global constants
   const selectFrom = getElement('.form-Select-from');
   const selectTo = getElement('.form-Select-to');
   const inputFrom = getElement('.form-Control-from');
   const inputTo = getElement('.form-Control-to');
   const swapButtons = document.querySelectorAll('.btn-SwapButton');
 
+  // Add event listeners
   selectFrom.addEventListener('change', () => {
     convert(selectFrom.value, selectTo.value, inputFrom.value).then(result => {
       inputTo.value = result;

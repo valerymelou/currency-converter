@@ -1,0 +1,69 @@
+.tst-ToastWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.tst-ToastWrapper-hidden {
+  display: none;
+}
+
+.tst-Toast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 0 1rem;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  box-shadow: 0 0 8px transparentize(#000, .4);
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.tst-Toast_Message {
+  margin: 0;
+  padding: 0.5rem;
+  font-size: .9rem;
+}
+
+.tst-Toast_Buttons {
+  padding: 0 .5rem;
+}
+
+.tst-Toast_Button {
+  margin: .3rem 0;
+  font-size: .9rem;
+  border: none;
+  border-radius: 3px;
+  box-shadow: none;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.tst-Toast_Button-refresh {
+  background-color: $success-color;
+  color: #fff;
+
+  &:focus,
+  &:hover {
+    background-color: darken($success-color, 5);
+  }
+}
+
+.tst-Toast_Button-dismiss {
+  background-color: #ddd;
+  color: #333;
+
+  &:focus,
+  &:hover {
+    background-color: darken(#ddd, 5);
+  }
+}

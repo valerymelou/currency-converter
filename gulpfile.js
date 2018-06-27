@@ -24,7 +24,7 @@ var getPathsConfig = function getPathsConfig() {
   return {
     scss: `${this.app}/scss`,
     scripts: `${this.app}/scripts`,
-    misc: `${this.app}/**/*.{html,ico,png}`,
+    misc: [`${this.app}/**/*.{html,ico,png}`, `${this.app}/sw.js`],
     dist: './www'
   }
 };
