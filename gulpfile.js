@@ -7,6 +7,7 @@ var plumber = require( 'gulp-plumber' );
 var postcss = require('gulp-postcss');
 var sass = require('gulp-sass');
 var sourcemaps = require( 'gulp-sourcemaps' );
+var uglify = require('gulp-uglify');
 var autoprefixer = require('autoprefixer');
 var babelify = require( 'babelify' );
 var browserify = require( 'browserify' );
@@ -57,6 +58,7 @@ gulp.task('scripts', function() {
     })
     .pipe(source('app.js'))
     .pipe(buffer())
+    .pipe(uglify())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.dist + '/js'));;
