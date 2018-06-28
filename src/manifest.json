@@ -5,7 +5,7 @@
   "background_color": "#989898",
   "display": "browser",
   "Scope": "/currency-converter/",
-  "start_url": "/",
+  "start_url": "/currency-converter/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
