@@ -14,7 +14,6 @@ var browserify = require( 'browserify' );
 var source = require( 'vinyl-source-stream' );
 var buffer = require( 'vinyl-buffer' );
 var browserSync = require( 'browser-sync' ).create();
-var reload = browserSync.reload;
 var del = require('del');
 var runSequence = require('run-sequence');
 
@@ -24,7 +23,7 @@ var getPathsConfig = function getPathsConfig() {
   return {
     scss: `${this.app}/scss`,
     scripts: `${this.app}/scripts`,
-    misc: [`${this.app}/**/*.{html,ico,png}`, `${this.app}/sw.js`],
+    misc: [`${this.app}/**/*.{html,ico,png}`, this.app + '/sw.js', this.app + '/manifest.json'],
     dist: './www'
   }
 };

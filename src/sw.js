@@ -1,4 +1,4 @@
-var staticCacheName = 'vm-currency-converter-static-v0';
+var staticCacheName = 'vm-currency-converter-static-v1';
 var allCaches = [
   staticCacheName
 ];
@@ -7,6 +7,7 @@ self.addEventListener('install', function(event) {
   event.waitUntil(caches.open(staticCacheName).then(function(cache) {
     return cache.addAll([
       '/currency-converter/',
+      '/currency-converter/favicon.ico',
       '/currency-converter/js/app.js',
       '/currency-converter/css/app.css',
       'https://fonts.gstatic.com/s/anton/v9/1Ptgg87LROyAm3Kz-C8.woff2',
