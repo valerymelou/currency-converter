@@ -82,7 +82,7 @@ const convert = function(fromCurrency, toCurrency, amount) {
 const registerServiceWorker = function() {
   if (!navigator.serviceWorker) return;
 
-  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+  navigator.serviceWorker.register('/currency-converter/sw.js', {scope: '/currency-converter/'}).then(function(reg) {
     if (!navigator.serviceWorker.controller) {
       return;
     }
