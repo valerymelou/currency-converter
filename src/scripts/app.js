@@ -1,7 +1,7 @@
-import { Converter } from './converter';
+import { CurrencyService } from './currencyService';
 
 const API_URL = 'https://free.currencyconverterapi.com/api/v5';
-const converter = new Converter(API_URL);
+const currencyService = new CurrencyService(API_URL);
 
 
 /**
@@ -70,7 +70,7 @@ const populateOptions = function(currencies) {
  * @return {Promise}
  */
 const convert = function(fromCurrency, toCurrency, amount) {
-  return converter.getExchangeRate(fromCurrency, toCurrency).then(exchangeRate => {
+  return currencyService.getExchangeRate(fromCurrency, toCurrency).then(exchangeRate => {
     return amount * exchangeRate.val;
   });
 }
@@ -193,7 +193,7 @@ const main = function() {
     });
   });
 
-  converter.getCurrencies().then(data => {
+  currencyService.getCurrencies().then(data => {
     populateOptions(Object.values(data.results));
     convert(selectFrom.value, selectTo.value, inputFrom.value).then(result => {
       inputTo.value = result;
