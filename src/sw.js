@@ -1,4 +1,4 @@
-var staticCacheName = 'vm-currency-converter-static-v3';
+var staticCacheName = 'vm-currency-converter-static-v4';
 var allCaches = [
   staticCacheName
 ];
@@ -6,10 +6,10 @@ var allCaches = [
 self.addEventListener('install', function(event) {
   event.waitUntil(caches.open(staticCacheName).then(function(cache) {
     return cache.addAll([
-      '/currency-converter/',
-      '/currency-converter/favicon.ico',
-      '/currency-converter/js/app.js',
-      '/currency-converter/css/app.css',
+      './',
+      './favicon.ico',
+      './js/app.js',
+      './css/app.css',
       'https://fonts.gstatic.com/s/anton/v9/1Ptgg87LROyAm3Kz-C8.woff2',
       'https://fonts.gstatic.com/s/poppins/v5/pxiEyp8kv8JHgFVrJJfecg.woff2'
     ]);
@@ -34,8 +34,8 @@ self.addEventListener('fetch', function(event) {
   var requestUrl = new URL(event.request.url);
 
   if (requestUrl.origin === location.origin) {
-    if (requestUrl.pathname === '/currency-converter/') {
-      event.respondWith(caches.match('/currency-converter/'));
+    if (requestUrl.pathname === './') {
+      event.respondWith(caches.match('./'));
       return;
     }
   }
