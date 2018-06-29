@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Currency Converter</title>
     <meta name="description" content="A simple currency converter.">
+    <meta name="author" content="Valery Melou">
     <meta name="theme-color" content="#2b2b2b">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/app.css">
@@ -30,23 +31,23 @@
               <select name="fromCurrency" class="form-Control form-Select form-Select-from" aria-label="Currency I have"></select>
               <input type="number" class="form-Control form-Control-from" min="0" value="1.00" aria-label="Amount">
             </div>
-            <button type="button" class="btn-SwapButton" aria-hidden="true">
+            <button type="button" class="btn-SwapButton" title="Swap currencies" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 32 32" width="24" height="24"><defs><clipPath id="_clipPath_tXtJBsJLkSN0S9mGzpGMXNMwSEgnXZqH"><rect width="32" height="32"/></clipPath></defs><g clip-path="url(#_clipPath_tXtJBsJLkSN0S9mGzpGMXNMwSEgnXZqH)"><g id="Group1"><path d=" M 0 0 L 32 0 L 32 32 L 0 32 L 0 0 Z " fill="none"/></g><path d=" M 16 0 C 9.183 0 3.489 4.213 1.167 10.167 L 3.625 11.167 C 5.568 6.188 10.28 2.667 16 2.667 C 20.323 2.667 24.177 4.787 26.584 8 L 21.333 8 L 21.333 10.667 L 30.667 10.667 L 30.667 1.333 L 28 1.333 L 28 5.459 C 24.977 1.99 20.601 0 16 0 Z  M 28.375 20.833 C 26.432 25.812 21.72 29.333 16 29.333 C 11.631 29.333 7.792 27.183 5.375 24 L 10.667 24 L 10.667 21.333 L 1.333 21.333 L 1.333 30.667 L 4 30.667 L 4 26.541 C 6.917 29.848 11.193 32 16 32 C 22.817 32 28.511 27.787 30.833 21.833 L 28.375 20.833 Z " fill="currentColor"/></g></svg>
             </button>
             <div class="form-Group">
               <select name="toCurrency" class="form-Control form-Select form-Select-to" aria-label="Currency I want"></select>
               <input type="number" class="form-Control form-Control-to" min="0" value="" aria-label="Amount">
             </div>
-            <button type="button" class="btn-SwapButton" aria-label="Swap currencies">
+            <button type="button" class="btn-SwapButton" title="Swap currencies" aria-label="Swap currencies">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><defs><clipPath id="_clipPath_tXtJBsJLkSN0S9mGzpGMXNMwSEgnXuqH"><rect width="32" height="32"/></clipPath></defs><g clip-path="url(#_clipPath_tXtJBsJLkSN0S9mGzpGMXNMwSEgnXuqH)"><g id="Group2"><path d=" M 0 0 L 32 0 L 32 32 L 0 32 L 0 0 Z " fill="none"/></g><path d=" M 16 0 C 9.183 0 3.489 4.213 1.167 10.167 L 3.625 11.167 C 5.568 6.188 10.28 2.667 16 2.667 C 20.323 2.667 24.177 4.787 26.584 8 L 21.333 8 L 21.333 10.667 L 30.667 10.667 L 30.667 1.333 L 28 1.333 L 28 5.459 C 24.977 1.99 20.601 0 16 0 Z  M 28.375 20.833 C 26.432 25.812 21.72 29.333 16 29.333 C 11.631 29.333 7.792 27.183 5.375 24 L 10.667 24 L 10.667 21.333 L 1.333 21.333 L 1.333 30.667 L 4 30.667 L 4 26.541 C 6.917 29.848 11.193 32 16 32 C 22.817 32 28.511 27.787 30.833 21.833 L 28.375 20.833 Z " fill="currentColor"/></g></svg>
             </button>
           </form>
         </div>
 
         <footer class="app-Footer">
-          <p class="app-Footer_Credits">Made with <span class="icon-Heart" aria-label="love"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><defs><clipPath id="_clipPath_gqMxkxCtZV3YByifF6qVGtZrXSP4bOcS"><rect width="32" height="32"/></clipPath></defs><g clip-path="url(#_clipPath_gqMxkxCtZV3YByifF6qVGtZrXSP4bOcS)"><path d=" M 16 30.017 L 15.555 29.649 C 14.71 28.942 13.565 28.175 12.239 27.29 C 7.073 23.83 0 19.097 0 11.026 C 0 6.04 4.057 1.983 9.043 1.983 C 11.734 1.981 14.285 3.18 16 5.252 C 17.715 3.18 20.266 1.981 22.957 1.983 C 27.943 1.983 32 6.04 32 11.026 C 32 19.097 24.927 23.83 19.761 27.29 C 18.435 28.175 17.291 28.942 16.446 29.648 L 16 30.017 Z " fill="#e72f2f"/></g></svg></span> by <a href="https://github.com/valerymelou" target="_blank">@valerymelou</a></p>
-          <p class="app-Footer_Credits">Proudly hosted by <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
-          <p class="app-Footer_Credits">Data from <a href="https://free.currencyconverterapi.com" target="_blank">Currency Converter API</a></p>
+          <p class="app-Footer_Credits">Made with <span class="icon-Heart" aria-label="love"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><defs><clipPath id="_clipPath_gqMxkxCtZV3YByifF6qVGtZrXSP4bOcS"><rect width="32" height="32"/></clipPath></defs><g clip-path="url(#_clipPath_gqMxkxCtZV3YByifF6qVGtZrXSP4bOcS)"><path d=" M 16 30.017 L 15.555 29.649 C 14.71 28.942 13.565 28.175 12.239 27.29 C 7.073 23.83 0 19.097 0 11.026 C 0 6.04 4.057 1.983 9.043 1.983 C 11.734 1.981 14.285 3.18 16 5.252 C 17.715 3.18 20.266 1.981 22.957 1.983 C 27.943 1.983 32 6.04 32 11.026 C 32 19.097 24.927 23.83 19.761 27.29 C 18.435 28.175 17.291 28.942 16.446 29.648 L 16 30.017 Z " fill="#e72f2f"/></g></svg></span> by <a href="https://github.com/valerymelou" target="_blank" rel="noopener">@valerymelou</a></p>
+          <p class="app-Footer_Credits">Proudly hosted by <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+          <p class="app-Footer_Credits">Data from <a href="https://free.currencyconverterapi.com" target="_blank" rel="noopener">Currency Converter API</a></p>
         </footer>
 
       </div>

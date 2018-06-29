@@ -235,7 +235,6 @@ function main() {
 
       // Perform initial conversion
       convert(selectFrom.value, selectTo.value, inputFrom.value).then(result => {
-        console.log(result);
         inputTo.value = result;
       });
     });

@@ -3,7 +3,7 @@
   "short_name": "Converter",
   "theme_color": "#2b2b2b",
   "background_color": "#989898",
-  "display": "browser",
+  "display": "fullscreen",
   "Scope": "/currency-converter/",
   "start_url": "/currency-converter/",
   "icons": [
