@@ -1,4 +1,4 @@
-var staticCacheName = 'vm-currency-converter-static-v5';
+var staticCacheName = 'vm-currency-converter-static-v6';
 var allCaches = [
   staticCacheName
 ];

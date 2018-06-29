@@ -9,7 +9,7 @@ const currencyService = new CurrencyService(API_URL);
  *
  * @param {Function} fn
  */
-const ready = function(fn) {
+function ready(fn) {
   if (typeof fn !== 'function') return;
 
   // If document is already loaded, run method.
@@ -28,17 +28,17 @@ const ready = function(fn) {
  * @param {String} selector
  * @return {HTMLElement}
  */
-const getElement = function(selector) {
+function getElement(selector) {
   return document.querySelector(selector) || document.createElement('_');
 }
 
 
 /**
- * Populates select options with the list of currencies.
+ * Populates selects options with the list of currencies.
  *
  * @param {Array} currencies
  */
-const populateOptions = function(currencies) {
+function populateSelectsOptions(currencies) {
   const selects = document.querySelectorAll('.form-Select');
   let selected;
 
@@ -69,9 +69,21 @@ const populateOptions = function(currencies) {
  *
  * @return {Promise}
  */
-const convert = function(fromCurrency, toCurrency, amount) {
+function convert(fromCurrency, toCurrency, amount) {
   return currencyService.getExchangeRate(fromCurrency, toCurrency).then(exchangeRate => {
+    // Save the exchange rate offline use
+    currencyService.saveExchangeRate(exchangeRate);
+
     return amount * exchangeRate.val;
+  }).catch(error => {
+    console.log(error.message);
+
+    // Get the exchange rate from the database
+    return currencyService.getExchangeRateFromDb(`${fromCurrency}_${toCurrency}`).then(data => {
+      if (data === undefined) return;
+
+      return amount * data.val;
+    });
   });
 }
 
@@ -79,7 +91,7 @@ const convert = function(fromCurrency, toCurrency, amount) {
 /**
  * Register the service worker.
  */
-const registerServiceWorker = function() {
+function registerServiceWorker() {
   if (!navigator.serviceWorker) return;
 
   navigator.serviceWorker.register('sw.js').then(function(reg) {
@@ -114,7 +126,7 @@ const registerServiceWorker = function() {
 /**
  * Called when there is an update for the service worker.
  */
-const updateReady = function(worker) {
+function updateReady(worker) {
   let toastWrapper = getElement('.tst-ToastWrapper');
 
   toastWrapper.classList.remove('tst-ToastWrapper-hidden');
@@ -130,7 +142,7 @@ const updateReady = function(worker) {
 /**
  * Tracks the installing status of the service worker.
  */
-const trackInstalling = function(worker) {
+function trackInstalling(worker) {
   worker.addEventListener('statechange', () => {
     if (worker.state === 'installed') {
       updateReady(worker);
@@ -142,7 +154,7 @@ const trackInstalling = function(worker) {
 /**
  * Entry point of our program. To be launched when the DOM is loaded.
  */
-const main = function() {
+function main() {
   // Register the service worker.
   registerServiceWorker();
 
@@ -194,12 +206,39 @@ const main = function() {
   });
 
   currencyService.getCurrencies().then(data => {
-    populateOptions(Object.values(data.results));
+    const currencies = Object.values(data.results).sort((a, b) => {
+      if (a.currencyName < b.currencyName) return -1;
+      if (a.currencyName > b.currencyName) return 1;
+
+      return 0;
+    });
+
+    // Save the result to the IndexedDB for offline use
+    currencyService.saveCurrencies(currencies);
+
+    // Populate selects options
+    populateSelectsOptions(currencies);
+
+    // Perform initial conversion
     convert(selectFrom.value, selectTo.value, inputFrom.value).then(result => {
       inputTo.value = result;
     });
   }).catch(error => {
-    console.log(error);
+    console.log(error.message);
+
+    // Try to get currencies from the IndexedDB
+    currencyService.getCurrenciesFromDb().then(data => {
+      if (data === undefined) return;
+
+      // Populate selects options
+      populateSelectsOptions(data);
+
+      // Perform initial conversion
+      convert(selectFrom.value, selectTo.value, inputFrom.value).then(result => {
+        console.log(result);
+        inputTo.value = result;
+      });
+    });
   });
 }
 
