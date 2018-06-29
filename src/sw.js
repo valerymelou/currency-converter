@@ -1,4 +1,4 @@
-var staticCacheName = 'vm-currency-converter-static-v4';
+var staticCacheName = 'vm-currency-converter-static-v5';
 var allCaches = [
   staticCacheName
 ];
@@ -7,9 +7,9 @@ self.addEventListener('install', function(event) {
   event.waitUntil(caches.open(staticCacheName).then(function(cache) {
     return cache.addAll([
       './',
-      './favicon.ico',
-      './js/app.js',
-      './css/app.css',
+      'favicon.ico',
+      'js/app.js',
+      'css/app.css',
       'https://fonts.gstatic.com/s/anton/v9/1Ptgg87LROyAm3Kz-C8.woff2',
       'https://fonts.gstatic.com/s/poppins/v5/pxiEyp8kv8JHgFVrJJfecg.woff2'
     ]);
