@@ -1,4 +1,4 @@
-var staticCacheName = 'vm-currency-converter-static-v7';
+var staticCacheName = 'vm-currency-converter-static-v8';
 var allCaches = [
   staticCacheName
 ];
@@ -10,6 +10,7 @@ self.addEventListener('install', function(event) {
       'favicon.ico',
       'js/app.js',
       'css/app.css',
+      'images/icons/icon-72x72.png',
       'https://fonts.gstatic.com/s/anton/v9/1Ptgg87LROyAm3Kz-C8.woff2',
       'https://fonts.gstatic.com/s/poppins/v5/pxiEyp8kv8JHgFVrJJfecg.woff2'
     ]);
