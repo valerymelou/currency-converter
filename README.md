@@ -9,7 +9,7 @@ A simple currency converter I made for #7DaysofCodeChallenge with #GoogleUdacity
 * Installs on mobile devices
 
 ## Installation
-It easy to install this project on your local machine. First step is to clone this project.
+It's easy to install this project on your local machine. First step is to clone this project.
 
 ```git clone https://github.com/valerymelou/currency-converter.git```
 
