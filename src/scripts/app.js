@@ -53,7 +53,7 @@ function populateSelectsOptions(currencies) {
         selected = false;
       }
 
-      select.options[select.options.length] = new Option(currency.currencyName, currency.id, false, selected);
+      select.options[select.options.length] = new Option(`${currency.id} - ${currency.currencyName}`, currency.id, false, selected);
     }
   });
 }
@@ -207,8 +207,8 @@ function main() {
 
   currencyService.getCurrencies().then(data => {
     const currencies = Object.values(data.results).sort((a, b) => {
-      if (a.currencyName < b.currencyName) return -1;
-      if (a.currencyName > b.currencyName) return 1;
+      if (a.id < b.id) return -1;
+      if (a.id > b.id) return 1;
 
       return 0;
     });
