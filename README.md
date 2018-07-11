@@ -19,7 +19,8 @@ Then install dependencies.
 
 ## Usage
 * Serve the app locally: ```npm run dev```
-* Build the app for production: ```npm run dev```
+* Build the app for production: ```npm run build```
+* Deploy the app on GitHub Pages: ```npm run deploy```
 
 ## Demo
 A working demo of this app is available at https://valerymelou.github.io/currency-converter.
